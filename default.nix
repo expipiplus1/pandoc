@@ -6,12 +6,7 @@
 #    nix-shell
 # To build pandoc for use on Linux and macOS systems without Nix:
 #    nix-build -A patched
-{ pkgs ?
-    import ((import <nixpkgs> {}).pkgs.fetchFromGitHub {
-      owner = "NixOS"; repo = "nixpkgs";
-      rev = "42b9b8f7c8687cb26e69c3559e0e1346fb0e680f";
-      sha256 = "01zcd0dh9x3qf5yflclbrcvff9yh8k9pmccc7vjlq3phc440qsyb";
-    }) {} }:
+{ pkgs ? import <nixpkgs> {} }:
 let haskellPackages = pkgs.haskellPackages;
     overrides = self: super: { };
     source-overrides = {
@@ -20,8 +15,8 @@ let haskellPackages = pkgs.haskellPackages;
       pandoc-types = pkgs.fetchFromGitHub {
         owner = "jgm";
         repo = "pandoc-types";
-        rev = "f1278603a4766f32b8375de84b8581f4bb1e665a";
-        sha256 = "05ykcs8qdjrxly9b6chjr939mv6r42mh51bl58k7jxsr1crxrrf9";
+        rev = "b7254385586aa20be0e3e838c25ddb04525b7d5d";
+        sha256 = "0j859dfr4mzk4yxjm1gi69m94h9qllrmax9aisv6h4sqxgnp8c3b";
       };
     };
     filterHaskellSource = src:
